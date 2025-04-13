@@ -1,8 +1,9 @@
 import express from "express";
+import { Department } from "../model/Department";
 
-export const router = express.Router();
+export const departmentRouter = express.Router();
 
-const departments = [
+const departments: Department[] = [
     {
         id: 1,
         name: "Angular",
@@ -30,6 +31,11 @@ const departments = [
 ];
 
 
-router.get("/department-list", (req, res) => {
+departmentRouter.get('/', (req, res) => {
+    res.send("Hello")
+})
+
+departmentRouter.get("/department-list", (req, res) => {
+    console.log("Get all departments request recieved")
     res.status(200).send(departments)
 });
